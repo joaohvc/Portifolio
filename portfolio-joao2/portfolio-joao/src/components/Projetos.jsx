@@ -143,12 +143,11 @@ export default function Projetos() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-[80] flex cursor-zoom-out items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
             onClick={() => setAmpliado(null)}
           >
             <div
               className="relative flex h-[calc(100dvh-2rem)] max-h-[56rem] w-full max-w-7xl flex-col sm:h-[calc(100dvh-4rem)]"
-              onClick={(e) => e.stopPropagation()}
             >
               <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden">
                 <motion.img
@@ -165,7 +164,8 @@ export default function Projetos() {
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 20 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-                  className="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+                  className="max-h-full max-w-full rounded-lg object-contain shadow-2xl cursor-default"
+                  onClick={(e) => e.stopPropagation()}
                 />
               </div>
               {(ampliado.projeto.galeria?.length ?? 0) > 1 && (
@@ -207,13 +207,13 @@ export default function Projetos() {
                 </div>
               )}
               {(ampliado.projeto.galeria?.length ?? 0) > 1 && (
-                  <span
-                    aria-live="polite"
-                    aria-atomic="true"
-                    className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-black/65 px-3 py-1 font-mono text-xs text-white backdrop-blur"
-                  >
-                    {ampliado.indice + 1} de {ampliado.projeto.galeria.length}
-                  </span>
+                <span
+                  aria-live="polite"
+                  aria-atomic="true"
+                  className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-black/65 px-3 py-1 font-mono text-xs text-white backdrop-blur"
+                >
+                  {ampliado.indice + 1} de {ampliado.projeto.galeria.length}
+                </span>
               )}
             </div>
             <motion.button
@@ -223,7 +223,7 @@ export default function Projetos() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.6 }}
               whileHover={{ rotate: 90 }}
-              className="absolute right-5 top-5 rounded-full bg-white/10 px-3 py-1.5 text-sm"
+              className="absolute right-4 top-4 z-20 rounded-full bg-white/10 px-3 py-1.5 text-sm backdrop-blur transition-colors hover:bg-white/20 active:scale-95 sm:right-6 sm:top-6"
               onClick={(e) => {
                 e.stopPropagation()
                 setAmpliado(null)
